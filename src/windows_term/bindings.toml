@@ -1,0 +1,47 @@
+output = "bindings.rs"
+binds = [
+    # Functions
+    "FillConsoleOutputAttribute",
+    "FillConsoleOutputCharacterA",
+    "GetConsoleCursorInfo",
+    "GetConsoleMode",
+    "GetConsoleScreenBufferInfo",
+    "GetFileInformationByHandleEx",
+    "GetNumberOfConsoleInputEvents",
+    "GetStdHandle",
+    "ReadConsoleInputW",
+    "SetConsoleCursorInfo",
+    "SetConsoleCursorPosition",
+    "SetConsoleMode",
+    "SetConsoleTitleW",
+
+    # Structs with implementations
+    "COORD+Copy",
+
+    # Other
+    "FileNameInfo",
+    "FILE_NAME_INFO",
+    "INVALID_HANDLE_VALUE",
+    "MAX_PATH",
+    "KEY_EVENT",
+
+    # console handles
+    "STD_INPUT_HANDLE",
+    "STD_OUTPUT_HANDLE",
+    "STD_ERROR_HANDLE",
+
+    # Key codes
+    "VK_BACK",
+    "VK_DELETE",
+    "VK_DOWN",
+    "VK_END",
+    "VK_ESCAPE",
+    "VK_HOME",
+    "VK_LEFT",
+    "VK_MENU",
+    "VK_RETURN",
+    "VK_RIGHT",
+    "VK_SHIFT",
+    "VK_TAB",
+    "VK_UP",
+]

@@ -24,6 +24,7 @@ lazy_static = "1.4.0"
 
 [target.'cfg(windows)'.dependencies]
 encode_unicode = "0.3"
+windows-targets = "0.48"
 
 [dev-dependencies]
 # Pick a setup for proptest that works with wasi

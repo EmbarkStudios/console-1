@@ -457,7 +457,6 @@ fn read_key_event() -> io::Result<KEY_EVENT_RECORD> {
 
     let mut events_read: u32 = unsafe { mem::zeroed() };
 
-    let mut key_event: KEY_EVENT_RECORD;
     loop {
         let success = unsafe { ReadConsoleInputW(handle, &mut buffer, 1, &mut events_read) };
         if success == 0 {
@@ -475,14 +474,18 @@ fn read_key_event() -> io::Result<KEY_EVENT_RECORD> {
             continue;
         }
 
-        key_event = unsafe { mem::transmute(buffer.Event) };
+        // SAFETY: We've already validated this is a KEY_EVENT
+        let key_event = unsafe { &buffer.Event.KeyEvent };
 
         if key_event.bKeyDown == 0 {
             // This is a key being released; ignore it.
             continue;
         }
 
-        return Ok(key_event);
+        // SAFETY: We've already validated this is a KEY_EVENT
+        return Ok(std::mem::ManuallyDrop::into_inner(unsafe {
+            buffer.Event.KeyEvent
+        }));
     }
 }
 
